@@ -1,0 +1,34 @@
+doctype html
+html.no-js
+
+  head
+    //- Redirect to the legacy site if we're in a crappy browser. We assume a real browser is one with an Object.seal (i.e. ES5)
+    //- , __proto__ and the history API, and also  the FileReader api
+    script.
+              
+      // Perform the check
+      (function(loc, w) {
+        if (!(w.FileReader && Object.seal && w.history && 'pushState' in w.history && ({ __proto__: [] } instanceof Array))) {
+          loc.replace('!{htmlWebpackPlugin.options.legacySiteUrl}' + loc.pathname + loc.search + loc.hash)
+        }
+      })(location, window);
+    
+    block head
+    
+    link(rel='shortcut icon', href='images/favicon.ico')
+    link(rel='apple-touch-icon', href='images/apple-touch-icon.png')
+
+    //- script(src=urls('scripts/xdomain.js'), crossorigin="anonymous")
+
+    //- link(rel='stylesheet', href=urls('css/ortoo-website.css'), media='screen, print')
+    //- link(rel='stylesheet', href=urls('css/ortoo-print.css'), media='print')
+
+    block css
+
+    //- script(src=urls('scripts/early.js'))
+    script(src="//use.typekit.net/cpz1jbj.js")
+    script.
+      try{Typekit.load();}catch(e){}
+      
+  body
+    block content

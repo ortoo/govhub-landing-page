@@ -1,0 +1,24 @@
+.laptop-graphic {
+  background-image: url('../images/macbook.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center bottom;
+  flex-grow: 1;
+  position: relative;
+
+  // position: relative;
+  // &:before {
+  //   display: block;
+  //   content: "";
+  //   width: 100%;
+  //   padding-top: (131 / 224) * 100%;
+  // }
+  //
+  // > .screen-wrapper {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0;
+  // }
+}

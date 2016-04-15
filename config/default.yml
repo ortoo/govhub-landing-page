@@ -1,0 +1,4 @@
+siteName: GovernorHub
+legacySiteUrl: https://legacy.governorhub.com
+authEndpoint: https://auth.governorhub.com
+cdnEndpoint: https://cdn.governorhub.com

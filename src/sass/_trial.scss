@@ -1,0 +1,11 @@
+.btn.btn-free-trial {
+  transition: color 0.4s ease-out, background 0.4s ease-out, border 0.4s ease-out;
+  background-color: $gh-yellow;
+  color: $gray-dark;
+  border-color: $btn-default-border;
+
+  &:hover {
+    background-color: $gh-green;
+    color: $gray-dark;
+  }
+}

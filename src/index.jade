@@ -1,0 +1,217 @@
+extends root
+
+block head
+  title= htmlWebpackPlugin.options.siteName
+  meta(name="viewport", content="width=device-width, initial-scale=1")
+    
+block css
+  link(rel="stylesheet", href="#{htmlWebpackPlugin.files.chunks.index.css}")
+  
+block content
+  nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
+    .navbar-container
+      .navbar-header
+        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+          span.sr-only Toggle navigation
+          i.fa.fa-reorder
+        a.navbar-brand(href='#') 
+          img(src=require('./images/governorhub-logo.png'), width="224", height="60")
+      #nav-collapse.collapse.navbar-collapse.navbar-ex1-collapse
+        ul.nav.navbar-nav.navbar-right
+          li(du-scrollspy="home")
+            a(title='Home page', href='#home', du-smooth-scroll) Home
+          li(du-scrollspy="features")
+            a(title='Check out our awesome services', href='#features', du-smooth-scroll) Features &amp; Pricing
+          li(du-scrollspy="gs")
+            a(title='Governor Services', href='#gs', du-smooth-scroll) Governor Services
+          li(du-scrollspy="mats")
+            a(title='Multi-Academy Trusts', href='#mats', du-smooth-scroll)  MATs
+          li
+            a.pull-right(href="#{htmlWebpackPlugin.options.AUTH_ENDPOINT}/auth?response_type=token&client_id=#{encodeURIComponent(htmlWebpackPlugin.options.CLIENT_ID)}&redirect_uri=#{encodeURIComponent(htmlWebpackPlugin.options.AUTH_REDIRECT_URI)}") Sign in
+          li
+            a.pull-right(href='error') Free Trial
+  
+  .home-page
+    .page-headline
+      h3 The modern way to run your school Governing Board or MAT Trust Board.
+      .user-actions
+        a.btn.btn-default.btn-lg(href="#{htmlWebpackPlugin.options.authEndpoint}/auth?response_type=token&client_id=#{encodeURIComponent(htmlWebpackPlugin.options.CLIENT_ID)}&redirect_uri=#{encodeURIComponent(htmlWebpackPlugin.options.AUTH_REDIRECT_URI)}") Sign in
+        button.btn.btn-default.btn-free-trial.btn-lg Try for free!
+    .laptop-graphic
+      screen-video(src="https://www.youtube-nocookie.com/embed/6yJAmX2540g?rel=0&amp;showinfo=0", orig-width="224", orig-height="131", screen-x="25", screen-y="9", screen-width="172", screen-height="104")
+  #home.home-placeholder
+    
+  .page-wrapper
+    #features
+      .page.color-2
+        .inner-page.row.align-bottom       
+          .col-md-6
+            h3.page-headline Features          
+            ul.big-list
+              li
+                i.fa.fa-users
+                |  Clerking tools
+              li
+                i.fa.fa-file
+                |  Store documents
+              li
+                i.fa.fa-calendar
+                |  Meeting calendar
+              li
+                i.fa.fa-info
+                |  Governor News
+              li
+                i.fa.fa-mobile
+                |  Mobile and Tablet Support
+          .col-md-6
+              img(src=require('./images/fourscreens.png'))
+      .page.color-3
+        .inner-page.row
+          .col-md-6
+            img(alt='GovernorHub makes it easy.', src=require('./images/backdrop_s.jpg'))
+          .col-md-6
+            h3.page-headline Pricing per Year
+            br
+            ul.big-list
+              li 
+                i.fa.fa-check
+                |  Single school &pound;400 
+              li 
+                i.fa.fa-check
+                |  MAT &pound;400 + &pound;100 per school
+              li 
+                i.fa.fa-check
+                |  Governor Services - see below 
+                
+    #gs
+      .page.color-2
+        h1.page-headline Governor Services
+        .row.inner-page
+          .col-md-6            
+            p.lead.
+              As well as providing a set of class-leading tools for your governors to use in their Governing Boards and
+              Trust Boards, GovernorHub also comes with a full backend database for Governor Services to use.
+            ul.list-wide
+              li
+                i.fa.fa-check
+                |  Governor Database 
+              li
+                i.fa.fa-check
+                |  Reports               
+              li
+                i.fa.fa-check
+                |  Clerking Service Support
+              li
+                i.fa.fa-check
+                |  Training Booking
+              li
+                i.fa.fa-check
+                |  Resources and Frequently Asked Questions
+              li
+                i.fa.fa-check
+                |  Governors &amp; Clerks Update their own details
+          .col-md-6           
+            img(src=require('./images/governorservices.jpg'), alt='Full Governor Services Support')
+      .page.color-3
+        .row.inner-page
+          .col-md-12          
+            h2   Pricing
+            table.table
+              thead
+                tr
+                  th Governing Boards in your authority 
+                  th Annual Fixed Charge for Database                  
+                  th Access to full GovernorHub features for each Governing Board or Trust Board subscribing to your Service
+              tbody
+                tr
+                  td up to 50
+                  td &pound;1500 + VAT
+                  td 15 included then &pound;100+VAT each per year                  
+                tr
+                  td up to 100
+                  td &pound;3000 + VAT
+                  td 30 included then &pound;100+VAT each per year                  
+                tr
+                  td unlimited
+                  td &pound;4000 + VAT
+                  td 40 included then &pound;100+VAT each per year                   
+    #mats.page.color-2
+      h2.page-headline Multi-Academy Trusts (MATs)
+      .row.inner-page
+        .col-md-6           
+          img(src=require('./images/mats.jpg'), alt='Full Governor Services Support')
+        .col-md-5.col-md-push-1            
+          p.
+            GovernorHub has built-in support for mutliple schools working together in a Multi-Academy Trust, Federation or Co-operative Trust.
+            GovernorHub gives access for Trust Board members to manage the work of the Trust Board plus an area for each 
+            Local Governing Board or Committee.            
+          p.
+            Members of the Local Governing Board can only see their papers
+            and details but members of the Trust Board can see the papers and details for academies in the Trust.
+          p.
+            For larger MATs and academy chains we also provide database access so a central admin team can manage the list of governors,
+            members and trustees across the whole MAT or chain.
+          
+    //- Free trial
+    #trial.page.color-3.free-trial-section
+      .page-headline 
+        button.btn.btn-free-trial.btn-massive Sign up for a free trial
+    //- About page
+    #customers.page.color-2
+      .inner-page
+        h1.page-headline Customers
+      .inner-page.row
+        .col-md-3
+          img.customer(src=require('./images/customers/norfolk.png'), alt='Norfolk County Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/medway.png'), alt='Medway Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/oxfordshire.png'), alt='Oxfordshire County Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/northants.png'), alt='Northamptonsire County Council')
+      .inner-page.row
+        .col-md-3
+          img.customer(src=require('./images/customers/luton.png'), alt='Luton Borough Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/bedford.png'), alt='Bedford Borough Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/mk.png'), alt='Milton Keynes Borough Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/nottingham.png'), alt='Nottingham City Council')
+      .inner-page.row
+        .col-md-3
+          img.small-customer(src=require('./images/customers/bristol.png'), alt='Bristol City Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/enfield.png'), alt='Enfield Borough Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/islington.png'), alt='Islington Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/swindon.png'), alt='Swindon Borough Council')
+      .inner-page.row
+        .col-md-3
+          img.customer(src=require('./images/customers/stockport.png'), alt='Stockport Borough Council')
+        .col-md-3
+          img.customer(src=require('./images/customers/westminster.png'), alt='Diocese of Westminster Multi-Academy Trust')
+        .col-md-3
+          img.customer(src=require('./images/customers/dneat.png'), alt='Diocese of Norwich Multi-Academy Trust')
+        .col-md-3
+          img.small-customer(src=require('./images/customers/s4s.png'), alt='Services 4 Schools')
+    
+    // /#contact
+    // The footer, social media icons, and copyright
+    footer.page.color-1
+      .inner-page.row
+        .col-md-6.social
+          a(href='http://twitter.com/governorhub')
+            i.fa.fa-twitter
+          a(href='http://facebook.com/governorhub')
+            i.fa.fa-facebook-square
+        .col-md-6.text-right.copyright
+          | &copy; 2016  
+          a(href='http://ortootech.com', title='Ortoo Technologies') Ortoo Technologies
+          |  | all rights reserved 
+          a.scroll(href='#top', title='Got to top')
+            | To top 
+            i.fa.fa-caret-up
+  
+  script(src="#{htmlWebpackPlugin.files.chunks.index.entry}")

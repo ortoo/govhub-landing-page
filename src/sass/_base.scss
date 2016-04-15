@@ -1,0 +1,11 @@
+html, body {
+  height: 100%;
+  background-color: $gh-blue;
+}
+
+// All images responsive
+img {
+  display: block;
+  height: auto;
+  max-width: 100%;
+ }
