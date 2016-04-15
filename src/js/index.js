@@ -14,11 +14,18 @@ angular.module('ghIndex', [angularAnimate, angularScroll, uiCollapse])
   .run(function($window, $rootScope) {
     'ngInject';
 
+    const history = $window.history;
+
     $rootScope.$on('duScrollspy:becameActive', function($event, $element, $target){
       //Automaticly update location
       var hash = $target.prop('id');
       if (hash) {
-        $window.location.hash = hash;
+        if (history && history.replaceState) {
+          history.replaceState(null, null, '#' + hash);
+        } else {
+          $window.location.hash = hash;
+        }
+
       }
     });
 
