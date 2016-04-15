@@ -1,11 +1,14 @@
 import '../sass/index.scss';
 
 import angular from 'angular';
+
 import angularScroll from 'angular-scroll';
+import angularAnimate from 'angular-animate';
+import uiCollapse from 'angular-ui-bootstrap/src/collapse';
 
 import screenVideo from './video/screenVideo';
 
-angular.module('ghIndex', [angularScroll])
+angular.module('ghIndex', [angularAnimate, angularScroll, uiCollapse])
   .directive('screenVideo', screenVideo)
   .value('duScrollDuration', 500)
   .run(function($window, $rootScope) {

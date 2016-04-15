@@ -11,12 +11,12 @@ block content
   nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
     .navbar-container
       .navbar-header
-        button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-ex1-collapse')
+        button.navbar-toggle(type='button', ng-click="showMenu = !showMenu")
           span.sr-only Toggle navigation
           i.fa.fa-reorder
         a.navbar-brand(href='#') 
           img(src=require('./images/governorhub-logo.png'), width="224", height="60")
-      #nav-collapse.collapse.navbar-collapse.navbar-ex1-collapse
+      #nav-collapse.collapse.navbar-collapse(uib-collapse="!showMenu")
         ul.nav.navbar-nav.navbar-right
           li(du-scrollspy="home")
             a(title='Home page', href='#home', du-smooth-scroll) Home

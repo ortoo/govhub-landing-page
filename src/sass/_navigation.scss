@@ -22,11 +22,33 @@
 
   .navbar-brand {
     padding: 0 $navbar-padding-horizontal;
+
+    > img {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .navbar-header {
+    border-bottom: 2px solid #555;
+    margin-bottom: -2px;
   }
 
   li a {
     padding-left: 25px;
     padding-right: 25px;
+  }
+}
+
+.navbar-default .navbar-collapse,.navbar-default .navbar-form {
+  border: none;
+}
+
+.navbar-default .navbar-collapse {
+  &.in,
+  &.in-add,
+  &.in-remove {
+    margin-top: 2px;
   }
 }
 
