@@ -1,11 +1,8 @@
-extends root
+extends __ROOT_JADE__
 
 block head
-  title= htmlWebpackPlugin.options.siteName
+  title= config.SITE_NAME
   meta(name="viewport", content="width=device-width, initial-scale=1")
-    
-block css
-  link(rel="stylesheet", href="#{htmlWebpackPlugin.files.chunks.index.css}")
   
 block content
   nav.navbar.navbar-default.navbar-fixed-top(role='navigation')
@@ -20,144 +17,182 @@ block content
         ul.nav.navbar-nav.navbar-right
           li(du-scrollspy="home")
             a(title='Home page', href='#home', du-smooth-scroll) Home
-          li(du-scrollspy="features")
-            a(title='Check out our awesome services', href='#features', du-smooth-scroll) Features &amp; Pricing
-          li(du-scrollspy="gs")
-            a(title='Governor Services', href='#gs', du-smooth-scroll) Governor Services
+          li(du-scrollspy="governing-boards")
+            a(title='Governing Boards', href='#governing-boards', du-smooth-scroll) Governing Boards
           li(du-scrollspy="mats")
             a(title='Multi-Academy Trusts', href='#mats', du-smooth-scroll)  MATs
+          li(du-scrollspy="gs")
+            a(title='Governor Support Services', href='#gs', du-smooth-scroll) Governor Services
+          li(du-scrollspy="pricing")
+            a(title='See our pricing', href='#pricing', du-smooth-scroll) Pricing
           li
-            a.pull-right(href="#{htmlWebpackPlugin.options.AUTH_ENDPOINT}/auth?response_type=token&client_id=#{encodeURIComponent(htmlWebpackPlugin.options.CLIENT_ID)}&redirect_uri=#{encodeURIComponent(htmlWebpackPlugin.options.AUTH_REDIRECT_URI)}") Sign in
+            a.pull-right(href="#{config.AUTH_ENDPOINT}/auth?response_type=token&client_id=#{encodeURIComponent(config.CLIENT_ID)}&redirect_uri=#{encodeURIComponent(config.AUTH_REDIRECT_URI)}") Sign in
           li
             a.pull-right(href='error') Free Trial
   
   .home-page
     .page-headline
-      h3 The modern way to run your school Governing Board or MAT Trust Board.
+      h3 The modern way to run your school Governing Board or Multi-Academy Trust Boards.
       .user-actions
-        a.btn.btn-default.btn-lg(href="#{htmlWebpackPlugin.options.authEndpoint}/auth?response_type=token&client_id=#{encodeURIComponent(htmlWebpackPlugin.options.CLIENT_ID)}&redirect_uri=#{encodeURIComponent(htmlWebpackPlugin.options.AUTH_REDIRECT_URI)}") Sign in
+        a.btn.btn-default.btn-lg(href="#{config.AUTH_ENDPOINT}/auth?response_type=token&client_id=#{encodeURIComponent(config.CLIENT_ID)}&redirect_uri=#{encodeURIComponent(config.AUTH_REDIRECT_URI)}") Sign in
         button.btn.btn-default.btn-free-trial.btn-lg Try for free!
-    .laptop-graphic
-      screen-video(src="https://www.youtube-nocookie.com/embed/6yJAmX2540g?rel=0&amp;showinfo=0", orig-width="224", orig-height="131", screen-x="25", screen-y="9", screen-width="172", screen-height="104")
+    .laptop-footer
+      screen-video(src="https://www.youtube-nocookie.com/embed/B6J7pY3snfs?rel=0&amp;showinfo=0", orig-width="224", orig-height="131", screen-x="25", screen-y="9", screen-width="172", screen-height="104")
   #home.home-placeholder
-    
+  
   .page-wrapper
-    #features
+    #governing-boards
       .page.color-2
-        .inner-page.row.align-bottom       
-          .col-md-6
-            h3.page-headline Features          
-            ul.big-list
-              li
-                i.fa.fa-users
-                |  Clerking tools
-              li
-                i.fa.fa-file
-                |  Store documents
-              li
-                i.fa.fa-calendar
-                |  Meeting calendar
-              li
-                i.fa.fa-info
-                |  Governor News
-              li
-                i.fa.fa-mobile
-                |  Mobile and Tablet Support
-          .col-md-6
-              img(src=require('./images/fourscreens.png'))
+        .inner-page
+          .row.align-bottom
+            h4.page-headline Being a great School Governor is hard work!
+            .page-subheader #{config.SITE_NAME} handles the mundane tasks for you, allowing the Governing Board to focus on what matters most
+          .row.align-top
+              .feature-list
+                .col-sm-6.feature-block
+                  img.icon(src=require('./images/rafif-icons/airplane.svg'))
+                  .content
+                    .headline Noticeboard
+                    .summary Forget about keeping track of everyone's email addresses. Post an item on the Noticeboard and #{config.SITE_NAME} will email the relevant committees for you.
+                .col-sm-6.feature-block
+                  img.icon(src=require('./images/rafif-icons/calendar2.svg'))
+                  .content
+                    .headline Meeting calendar
+                    .summary No more having to manually update your calendar every time a meeting is rescheduled. #{config.SITE_NAME} has a single calendar that you can sync to your various devices. 
+                .col-sm-6.feature-block
+                  img.icon(src=require('./images/rafif-icons/documents.svg'))
+                  .content
+                    .headline Store documents
+                    .summary Struggle to find the latest version of a document, or can't remember where you saved those model policies? With #{config.SITE_NAME} all your documents are kept in one place and easily searchable.
+                .col-sm-6.feature-block
+                  img.icon(src=require('./images/rafif-icons/pen.svg'))
+                  .content
+                    .headline Clerking tools
+                    .summary For clerks, #{config.SITE_NAME} has a whole host of tools that make managing the Governing Board a breeze. From keeping track of the constitution, committees and roles, to automatically notifying you local Governor Support Services of any membership changes.
+                .col-sm-6.feature-block
+                  img.icon(src=require('./images/rafif-icons/news.svg'))
+                  .content
+                    .headline Governor News
+                    .summary Keep up to date with local and national education news.
+                .col-sm-6.feature-block
+                  img.icon(src=require('./images/rafif-icons/phone2.svg'))
+                  .content
+                    .headline Mobile and tablet apps
+                    .summary We have apps for smartphones and tablets - allowing you to access GovernorHub and your documents on the move, or even offline.
+                .col-sm-6.feature-block
+                  img.icon(src=require('./images/rafif-icons/shield.svg'))
+                  .content
+                    .headline Security as standard
+                    .summary We understand how important security is. All your data and documents are encrypted at rest, all internet traffic is over TLS and we stick to industry best practice with things like password storage.
+        .fourscreens-footer
+    
+    #mats
       .page.color-3
-        .inner-page.row
-          .col-md-6
-            img(alt='GovernorHub makes it easy.', src=require('./images/backdrop_s.jpg'))
-          .col-md-6
-            h3.page-headline Pricing per Year
-            br
-            ul.big-list
-              li 
-                i.fa.fa-check
-                |  Single school &pound;400 
-              li 
-                i.fa.fa-check
-                |  MAT &pound;400 + &pound;100 per school
-              li 
-                i.fa.fa-check
-                |  Governor Services - see below 
-                
+        .inner-page
+          .row.align-bottom
+            h4.page-headline Multi-Academy Trusts
+            .page-subheader #{config.SITE_NAME} makes handling and sharing information across your Governing Boards a doddle!
+            
+          .row.align-center
+            .col-sm-6
+              .feature-list
+                .feature-block
+                  img.icon(src=require('./images/rafif-icons/female.svg'))
+                  .content
+                    .headline Governing Board Areas
+                    .summary Each of your Local Governing Boards, plus your Trust Board get an area on #{config.SITE_NAME} (see the&nbsp;
+                      a(href="#governing-boards", du-smooth-scroll) features above
+                      | ). Members of the Local Governing Boards can only see their papers and details but members of the Trust Board can see the papers and details for academies in the Trust.
+                .feature-block
+                  img.icon(src=require('./images/rafif-icons/cloud.svg'))
+                  .content
+                    .headline Shared news, calendar and resources
+                    .summary Store resources that all of your Local Governing Board can access, send them news and information and see every meeting across the trust on a shared calendar.
+                    
+                .feature-block
+                  img.icon(src=require('./images/rafif-icons/buildings.svg'))
+                  .content
+                    .headline Large MATs
+                    .summary For larger MATs and academy chains we provide database access. Manage the list of governors, members and trustees across the whole MAT or chain. See our&nbsp;
+                      a(href="#gs", du-smooth-scroll) Governor Service
+                      | &nbsp;functionality below.
+            .col-sm-6
+              img.screenshot(src=require('./images/screenshots/trust-board-screenshot.png'))
+    
     #gs
-      .page.color-2
-        h1.page-headline Governor Services
-        .row.inner-page
-          .col-md-6            
-            p.lead.
-              As well as providing a set of class-leading tools for your governors to use in their Governing Boards and
-              Trust Boards, GovernorHub also comes with a full backend database for Governor Services to use.
-            ul.list-wide
-              li
-                i.fa.fa-check
-                |  Governor Database 
-              li
-                i.fa.fa-check
-                |  Reports               
-              li
-                i.fa.fa-check
-                |  Clerking Service Support
-              li
-                i.fa.fa-check
-                |  Training Booking
-              li
-                i.fa.fa-check
-                |  Resources and Frequently Asked Questions
-              li
-                i.fa.fa-check
-                |  Governors &amp; Clerks Update their own details
-          .col-md-6           
-            img(src=require('./images/governorservices.jpg'), alt='Full Governor Services Support')
-      .page.color-3
-        .row.inner-page
-          .col-md-12          
-            h2   Pricing
-            table.table
-              thead
-                tr
-                  th Governing Boards in your authority 
-                  th Annual Fixed Charge for Database                  
-                  th Access to full GovernorHub features for each Governing Board or Trust Board subscribing to your Service
-              tbody
-                tr
-                  td up to 50
-                  td &pound;1500 + VAT
-                  td 15 included then &pound;100+VAT each per year                  
-                tr
-                  td up to 100
-                  td &pound;3000 + VAT
-                  td 30 included then &pound;100+VAT each per year                  
-                tr
-                  td unlimited
-                  td &pound;4000 + VAT
-                  td 40 included then &pound;100+VAT each per year                   
-    #mats.page.color-2
-      h2.page-headline Multi-Academy Trusts (MATs)
-      .row.inner-page
-        .col-md-6           
-          img(src=require('./images/mats.jpg'), alt='Full Governor Services Support')
-        .col-md-5.col-md-push-1            
-          p.
-            GovernorHub has built-in support for mutliple schools working together in a Multi-Academy Trust, Federation or Co-operative Trust.
-            GovernorHub gives access for Trust Board members to manage the work of the Trust Board plus an area for each 
-            Local Governing Board or Committee.            
-          p.
-            Members of the Local Governing Board can only see their papers
-            and details but members of the Trust Board can see the papers and details for academies in the Trust.
-          p.
-            For larger MATs and academy chains we also provide database access so a central admin team can manage the list of governors,
-            members and trustees across the whole MAT or chain.
-          
+      .page.color-4
+        .inner-page
+          .row.align-bottom
+            h4.page-headline Governor Services
+            .page-subheader No more boring admin - #{config.SITE_NAME} is a product designed specifically to do it for you!
+            
+          .row.align-center
+            .col-sm-6
+              .feature-block
+                img.icon(src=require('./images/rafif-icons/female.svg'))
+                .content
+                  .headline Governing Board Areas
+                  .summary Your Governing Boards get all the class-leading #{config.SITE_NAME} functionality (
+                    a(href="#governing-boards", du-smooth-scroll) see above
+                    | ).
+              .feature-block
+                img.icon(src=require('./images/rafif-icons/news.svg'))
+                .content
+                  .headline News
+                  .summary Share service-wide news and announcements on your own news page and it appears in Governors' customized news feeds too. For more important announcements simply tick a box and have the article emailed as well.
+            .col-sm-6
+              img.screenshot.padded(src=require('./images/screenshots/gs-newsfeed.png'))
+                
+          .row.align-center
+            .col-sm-6
+              img.screenshot.padded(src=require('./images/screenshots/gs-training.png'))
+            .col-sm-6
+              .feature-block
+                img.icon(src=require('./images/rafif-icons/comments.svg'))
+                .content
+                  .headline FAQs
+                  .summary Shift routine questions from your phone line or email inbox over to #{config.SITE_NAME} freeing up you and your team to concentrate on more important matters.
+              .feature-block
+                img.icon(src=require('./images/rafif-icons/table.svg'))
+                .content
+                  .headline Training
+                  .summary Put all of your training courses onto #{config.SITE_NAME} and Governors can book on with a single click. Manage trainers and attendance lists, all from within #{config.SITE_NAME}.
+          .row.align-center
+            .col-sm-6
+              .feature-block
+                img.icon(src=require('./images/rafif-icons/documents.svg'))
+                .content
+                  .headline Resources
+                  .summary Easily upload resources like model policies, guidance and advice for all your Governors to access. Only those Governors who subscribe to your service will be able to see them, making your service more attractive.
+              .feature-block
+                img.icon(src=require('./images/rafif-icons/list.svg'))
+                .content
+                  .headline Clerking Service
+                  .summary Manage your clerking service with #{config.SITE_NAME}. Assign and remove clerks from Governing Boards and appoint temporary replacements. Because the Governing Board is using #{config.SITE_NAME} all the documents and previous conversations will be instantly available.
+            .col-sm-6
+              img.screenshot.padded(src=require('./images/screenshots/clerking-group.png'))
+          .row.align-top
+            .col-sm-6.col-md-4.feature-block
+              img.icon(src=require('./images/rafif-icons/statistics.svg'))
+              .content
+                .headline Reporting and data download
+                .summary Download reports for your service as a whole or just individual Governing Bodies. Things like contact details, address labels, vacancy reports. No more esoteric spreadsheets to maintain!
+            .col-sm-6.col-md-4.feature-block
+              img.icon(src=require('./images/rafif-icons/loop.svg'))
+              .content
+                .headline Database
+                .summary Search for Governing Boards and Governors, see changes that have been made to them, download reports, see upcoming training courses... With the #{config.SITE_NAME} all your data is at your fingertips.
+            .col-sm-6.col-md-4.feature-block
+              img.icon(src=require('./images/rafif-icons/link.svg'))
+              .content
+                .headline Automatically kept in sync
+                .summary As Governors or Clerks amend things like terms of office, contact details or the constitution in #{config.SITE_NAME} these changes are instantly reflected in your database. No more filling out of paper forms followed by manual data entry! Hello the future!    
     //- Free trial
-    #trial.page.color-3.free-trial-section
+    #trial.page.color-5.free-trial-section
       .page-headline 
         button.btn.btn-free-trial.btn-massive Sign up for a free trial
     //- About page
-    #customers.page.color-2
+    #customers.page.color-5
       .inner-page
         h1.page-headline Customers
       .inner-page.row
@@ -213,5 +248,3 @@ block content
           a.scroll(href='#top', title='Got to top')
             | To top 
             i.fa.fa-caret-up
-  
-  script(src="#{htmlWebpackPlugin.files.chunks.index.entry}")

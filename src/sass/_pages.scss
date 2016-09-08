@@ -12,17 +12,17 @@
 }
 
 .color-2 {
-  background: $color-2;
+  @include gradient-vertical($gh-beige, darken($gh-beige, 15%));
   color: $gray-dark;
 }
 
 .color-3 {
-  background: $color-3;
+  @include gradient-vertical(#fff, lighten($gh-blue, 25%));
   h1,h2,h3,h4,h5,h6 {
     color: $color-7;
   }
   a {
-    color: $color-2;
+    color: darken($link-color, 20%);
   }
   .btn {
     color: $color-4;
@@ -30,22 +30,13 @@
 }
 
 .color-4 {
-  background: $color-4;
-  color: #333;
-  h1,h2,h3,h4,h5,h6 {
-    color: $color-7;
-  }
-  a {
-    color: $color-6;
-  }
-  .btn {
-    color: $color-4;
-  }
+  background: $gh-beige;
+  color: $gray-dark;
 }
 
 .color-5 {
-  background: $color-5;
-  color: $color-4;
+  background: #fff;
+  color: $gray-dark
 }
 
 /* Layout */
@@ -156,4 +147,14 @@ footer {
 .page-wrapper {
   position: relative;
   z-index: 1;
+}
+
+.screenshot {
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.6);
+
+  &.padded {
+    padding: 5px;
+    background: #fff;
+  }
 }

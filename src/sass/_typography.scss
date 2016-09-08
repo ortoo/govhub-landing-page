@@ -1,6 +1,13 @@
 .page-headline {
   font-size: 42px;
   text-align: center;
+  width: 100%;
+}
+
+.page-subheader {
+  text-align: center;
+  width: 100%;
+  font-size: $font-size-large;
 }
 
 .large {

@@ -6,7 +6,7 @@ import angularScroll from 'angular-scroll';
 import angularAnimate from 'angular-animate';
 import uiCollapse from 'angular-ui-bootstrap/src/collapse';
 
-import screenVideo from './video/screenVideo';
+import screenVideo from './video/screenVideo.js';
 
 angular.module('ghIndex', [angularAnimate, angularScroll, uiCollapse])
   .directive('screenVideo', screenVideo)
