@@ -46,8 +46,7 @@
 }
 
 .inner-page {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 30px 10px;
   max-width:1100px;
   margin: 0 auto;
  }
@@ -132,6 +131,15 @@ footer {
   }
 }
 
+// Bugfix for safari - see http://stackoverflow.com/questions/34250282/flexbox-safari-bug-flex-wrap
+.row.align-bottom,
+.row.align-center {
+  &:before,
+  &:after {
+    content: normal;
+  }
+}
+
 .align-bottom {
   display: flex;
   align-items: flex-end;
@@ -152,6 +160,9 @@ footer {
 .screenshot {
   border-radius: 5px;
   box-shadow: 0 1px 2px rgba(0,0,0,.6);
+  margin-top: 10px;
+  margin-bottom: 10px;
+
 
   &.padded {
     padding: 5px;

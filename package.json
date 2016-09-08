@@ -1,6 +1,6 @@
 {
   "name": "@ortoo/govhub-landing-page",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "v2 of GovernorHub Landing Page",
   "main": "src/js/index.js",
   "scripts": {
