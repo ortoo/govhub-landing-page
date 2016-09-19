@@ -199,13 +199,219 @@ block content
                 img(src=require('./images/rafif-icons/loop.svg'))
               .content
                 .headline Database
-                .summary Search for Governing Boards and Governors, see changes that have been made to them, download reports, see upcoming training courses... With the #{config.SITE_NAME} all your data is at your fingertips.
+                .summary Search for Governing Boards and Governors, see changes that have been made to them, download reports, see upcoming training courses... With #{config.SITE_NAME} all your data is at your fingertips.
             .col-sm-6.col-md-4.feature-block
               .icon
                 img(src=require('./images/rafif-icons/link.svg'))
               .content
                 .headline Automatically kept in sync
                 .summary As Governors or Clerks amend things like terms of office, contact details or the constitution in #{config.SITE_NAME} these changes are instantly reflected in your database. No more filling out of paper forms followed by manual data entry! Hello the future!    
+    #pricing(ng-controller="PricingController as Pricing")
+      .page.color-5
+        .inner-page
+          .row
+            h2.page-headline Pricing
+            .smallprint All prices are per year and exclusive of VAT
+            .price-section
+              h3 Individual Governing Board
+              .price £400
+            .price-section
+              h3 Multiple Boards
+              .subtitle Pick and choose from the options below
+              .row
+                .col-md-8
+                  .multiple-boards-pricing
+                    .price-block-segment
+                      .segment-title Initial Cost
+                      .price-block-container
+                        price-block
+                          .price £300
+                          .smallprint Free if spending more than £5000
+                    
+                    .price-block-segment
+                      .segment-title Board Tools
+                      .price-block-container
+                        price-block
+                          .price £100 
+                          span per board
+                        
+                    .price-block-segment
+                      .segment-title GovernorHub Database
+                      .price-block-container
+                        price-block
+                          .title Database management tools
+                          .price £500
+                          .smallprint Free if spending more than £5000
+                        price-block
+                          .title Each board in the database
+                          .price £30 
+                          .smallprint Free for boards with the Board Tools
+                        
+                    .price-block-segment
+                      .segment-title GovernorHub Services Tools
+                      .price-block-container
+                        price-block 
+                          .title News, Resources and FAQs
+                          .price £500
+                          .smallprint Free if spending more than £5000
+                        price-block 
+                          .title Training Booking and Management
+                          .price £500
+                          .smallprint Free if spending more than £5000
+                        price-block 
+                          .title Clerking Service Tools
+                          .price £500
+                          .smallprint Free if spending more than £5000
+                .col-md-4
+                  .pricing-calculator(ng-cloak)
+                    .title Pricing Calculator
+                    table
+                      tr
+                        td
+                        td Initial cost
+                        td £{{Pricing.initialCost}}
+                      tr
+                        td
+                          input.form-control(type="number", ng-model="Pricing.fullBoardCount")
+                        td GovernorHub Board Tools
+                        td £{{Pricing.fullBoardCount * Pricing.fullBoardCost | number:0}}
+                      tr
+                        td.icon-cell
+                          a(href, ng-click="Pricing.configureDatabase()", ng-hide="Pricing.dbSelected")
+                            i.fa.fa-plus
+                          a(href, ng-click="Pricing.unconfigureDatabase()", ng-show="Pricing.dbSelected")
+                            i.fa.fa-minus
+                        td GovernorHub Database
+                        td £{{Pricing.dbSelected * Pricing.dbCost | number:0}}
+                      tr.subrow(ng-show="Pricing.dbSelected")
+                        td
+                          input.form-control(type="number", ng-model="Pricing.dbBoardCount")
+                        td Database Boards
+                        td
+                      tr.subrow(ng-show="Pricing.dbSelected && Pricing.fullBoardCount")
+                        td {{Pricing.fullBoardCount}} x
+                        td Boards (included)
+                        td £0
+                      tr.subrow(ng-show="Pricing.dbSelected && Pricing.payingDbBoardCount()")
+                        td {{Pricing.payingDbBoardCount()}} x
+                        td Database Only Boards
+                        td £{{Pricing.payingDbBoardCount() * Pricing.dbBoardCost | number:0}}
+                      tr
+                        td.icon-cell
+                          a(href, ng-click="Pricing.selectServiceFeature('content')", ng-hide="Pricing.hasServiceFeature('content')")
+                            i.fa.fa-plus
+                          a(href, ng-click="Pricing.removeServiceFeature('content')", ng-show="Pricing.hasServiceFeature('content')")
+                            i.fa.fa-minus
+                        td News, Resources and FAQs
+                        td £{{Pricing.hasServiceFeature('content') * Pricing.serviceFeatureCost | number:0}}
+                      tr
+                        td.icon-cell
+                          a(href, ng-click="Pricing.selectServiceFeature('training')", ng-hide="Pricing.hasServiceFeature('training')")
+                            i.fa.fa-plus
+                          a(href, ng-click="Pricing.removeServiceFeature('training')", ng-show="Pricing.hasServiceFeature('training')")
+                            i.fa.fa-minus
+                        td Training Booking and Management
+                        td £{{Pricing.hasServiceFeature('training') * Pricing.serviceFeatureCost | number:0}}
+                      tr
+                        td.icon-cell
+                          a(href, ng-click="Pricing.selectServiceFeature('clerks')", ng-hide="Pricing.hasServiceFeature('clerks')")
+                            i.fa.fa-plus
+                          a(href, ng-click="Pricing.removeServiceFeature('clerks')", ng-show="Pricing.hasServiceFeature('clerks')")
+                            i.fa.fa-minus
+                        td Clerking Service Tools
+                        td £{{Pricing.hasServiceFeature('clerks') * Pricing.serviceFeatureCost | number:0}}
+                      tr.totals
+                        td(colspan="3")
+                          .subtotal(ng-show="Pricing.discount()") Subtotal: £{{Pricing.subtotal() | number:0}}
+                          .discount(ng-show="Pricing.discount()") Discount: £{{Pricing.discount() | number:0}}
+                          .total Total: £{{Pricing.total() | number:0}}
+                
+                      
+                
+              //-   .price-block-container.selectable(ng-class="{selected: Pricing.fullBoardCount}")
+              //-     price-block.flippable(ng-class="{flipped: Pricing.configFullBoards}")
+              //-       .front
+              //-         .description Each of your governing or trust boards
+              //-         .price.price-align-center £100
+              //-         button.btn.btn-default.btn-xs(ng-click="Pricing.configureFullBoards()") Select and calculate
+              //-       .back
+              //-         .description
+              //-           small How many boards would you like?
+              //-             br
+              //-             br
+              //-           input.input-sm.form-control.board-number(type="number", value="2", ng-model="Pricing.fullBoardCount")
+              //-         .price
+              //-           small {{Pricing.fullBoardCount}} boards at £{{Pricing.fullBoardCost}} each
+              //-           .total £{{Pricing.fullBoardCount * Pricing.fullBoardCost}}
+              //-         button.btn.btn-default.btn-xs(ng-click="Pricing.unconfigureFullBoards()") Remove
+              //-         
+              //- .price-block-segment
+              //-   .segment-title GovernorHub Database
+              //-   .price-block-container.selectable.price-combination(ng-class="{selected: Pricing.dbSelected}")
+              //-     price-block.flippable(ng-class="{flipped: Pricing.configDatabase}")
+              //-       .front
+              //-         .description Database Tools
+              //-         .price.price-align-center £500
+              //-         .smallprint Free if spending more than £5000
+              //-       .back
+              //-         .description
+              //-           small How many boards would you like in the database in total?
+              //-             br
+              //-             br
+              //-           input.input-sm.form-control.board-number(type="number", value="2", ng-model="Pricing.dbBoardCount")
+              //-       
+              //-     price-block.flippable(ng-class="{flipped: Pricing.configDatabase}")
+              //-       .front
+              //-         .description Each board in the database
+              //-         .price.price-align-center £30
+              //-         button.btn.btn-default.btn-xs(ng-click="Pricing.configureDatabase()") Select and calculate
+              //-         .smallprint Free for those with the Board Tools
+              //-       .back
+              //-         .description Pricing for {{Pricing.totalDbBoardsCount()}} boards
+              //-         .price.price-itemised
+              //-           ul
+              //-             li.item 
+              //-               .item-title Database tools
+              //-               .item-price £{{Pricing.dbCost}}
+              //-             li.item(ng-show="Pricing.fullBoardCount")
+              //-               .item-title {{Pricing.fullBoardCount}} x boards (included)
+              //-               .item-price £0
+              //-             li.item(ng-show="Pricing.payingDbBoardCount()")
+              //-               .item-title {{Pricing.payingDbBoardCount()}} x Database only boards
+              //-               .item-price £{{Pricing.payingDbBoardCount() * Pricing.dbBoardCost}}
+              //-           .total £{{Pricing.dbCost + Pricing.payingDbBoardCount() * Pricing.dbBoardCost}}
+              //-         button.btn.btn-default.btn-xs(ng-click="Pricing.unconfigureDatabase()") Remove
+              //-             
+              //- .price-block-segment
+              //-   .segment-title Centralized Content and Management Tools
+              //-   .price-block-container
+              //-     price-block.selectable(ng-class="{selected: Pricing.hasServiceFeature('content')}")
+              //-       .description Centralized news, resources and FAQs
+              //-       .price.price-align-center £500
+              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.selectServiceFeature('content')", ng-hide="Pricing.hasServiceFeature('content')") Select this
+              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.removeServiceFeature('content')", ng-show="Pricing.hasServiceFeature('content')", ng-cloak) Remove
+              //-       .smallprint Free if spending more than £5000
+              //-     
+              //-     price-block.selectable(ng-class="{selected: Pricing.hasServiceFeature('training')}")
+              //-       .description Training booking and management tools
+              //-       .price.price-align-center £500
+              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.selectServiceFeature('training')", ng-hide="Pricing.hasServiceFeature('training')") Select this
+              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.removeServiceFeature('training')", ng-show="Pricing.hasServiceFeature('training')", ng-cloak) Remove
+              //-       .smallprint Free if spending more than £5000
+              //-     
+              //-     price-block.selectable(ng-class="{selected: Pricing.hasServiceFeature('clerks')}")
+              //-       .description Clerks management tools
+              //-       .price.price-align-center £500
+              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.selectServiceFeature('clerks')", ng-hide="Pricing.hasServiceFeature('clerks')") Select this
+              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.removeServiceFeature('clerks')", ng-show="Pricing.hasServiceFeature('clerks')", ng-cloak) Remove
+              //-       .smallprint Free if spending more than £5000
+              //-     
+              //-   total-block(ng-cloak)
+              //-     .subtotal(ng-show="Pricing.discount()") Subtotal: £{{Pricing.subtotal()}}
+              //-     .discount(ng-show="Pricing.discount()") Discount: -£{{Pricing.discount()}}
+              //-     .total Total: £{{Pricing.total()}}
+            
+            
     //- Free trial
     #trial.page.color-5.free-trial-section
       .page-headline 

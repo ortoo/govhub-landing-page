@@ -7,10 +7,12 @@ import angularAnimate from 'angular-animate';
 import uiCollapse from 'angular-ui-bootstrap/src/collapse';
 
 import screenVideo from './video/screenVideo.js';
+import PricingController from './pricing/PricingController.js';
 
 angular.module('ghIndex', [angularAnimate, angularScroll, uiCollapse])
   .directive('screenVideo', screenVideo)
   .value('duScrollDuration', 500)
+  .controller('PricingController', PricingController)
   .run(function($window, $rootScope) {
     'ngInject';
 

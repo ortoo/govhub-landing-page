@@ -67,5 +67,9 @@
     "webpack-dev-server": "^1.14.1",
     "webpack-s3-plugin": "^0.6.7",
     "yaml-loader": "^0.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^3.5.0",
+    "eslint-plugin-angular": "^1.4.0"
   }
 }

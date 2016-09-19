@@ -1,0 +1,172 @@
+.price-section {
+  text-align: center;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  h1, h2, h3, h4, h5, h6 {
+    text-decoration: underline;
+  }
+
+  .price {
+    font-size: 36px;
+
+    .secondary-price {
+      font-size: 16px;
+    }
+  }
+}
+
+.smallprint {
+  text-align: center;
+  font-size: $font-size-small;
+  color: $gray-light;
+}
+
+.multiple-boards-pricing {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.price-block-segment {
+
+  margin: $price-block-margin;
+
+  .segment-title {
+    font-weight: 600;
+    font-size: $font-size-large;
+  }
+
+  .price-block-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.price-section {
+  price-block {
+    width: $price-block-width;
+    height: $price-block-height;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+
+    margin-right: $price-block-margin;
+
+    box-shadow: 0 1px 2px rgba(0,0,0,.6);
+    position: relative;
+    padding: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
+
+    .smallprint {
+      font-size: 11px;
+    }
+
+    .title {
+      margin-bottom: auto; // Sticks this as high as possible
+      line-height: 1.2;
+    }
+
+    .price {
+      font-size: 24px;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+    }
+  }
+
+}
+
+.pricing-calculator {
+
+  margin-top: $price-block-margin;
+
+  .title {
+    font-weight: 600;
+    font-size: $font-size-large;
+  }
+
+  .total, .subtotal, .discount {
+    text-align: right;
+  }
+
+  .total {
+    font-size: 24px;
+  }
+
+  .discount {
+    color: $state-danger-text;
+  }
+
+  table {
+    margin: auto;
+    text-align: left;
+
+    tr {
+
+      &.totals {
+        td, td:last-child {
+          font-weight: normal;
+        }
+
+        border-top: 1px solid #ccc;
+      }
+
+      &.subrow {
+        font-size: 12px;
+
+        input {
+          font-size: 12px;
+          text-align: right;
+        }
+      }
+
+      td {
+        padding: 2px;
+
+        &.icon-cell {
+          text-align: center !important;
+
+          i {
+            color: $gray-light;
+          }
+
+          .ng-hide-add {
+            display: none;
+          }
+        }
+
+        &:first-child {
+          text-align: right;
+        }
+
+        &:last-child {
+          text-align: right;
+          font-weight: bold;
+        }
+
+        input {
+          display: inline-block;
+          width: 4em;
+          font-size: 16px;
+          padding: 0;
+          text-align: center;
+          height: inherit;
+        }
+      }
+    }
+  }
+}
