@@ -8,7 +8,11 @@
 
 .color-1 {
   background: $color-1;
-  color: $color-4;
+  color: #fff;
+
+  a:hover {
+    color: $gray-lighter;
+  }
 }
 
 .color-2 {
@@ -150,6 +154,7 @@ footer {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .page-wrapper {

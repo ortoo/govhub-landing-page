@@ -17,18 +17,20 @@ block content
         ul.nav.navbar-nav.navbar-right
           li(du-scrollspy="home")
             a(title='Home page', href='#home', du-smooth-scroll) Home
-          li(du-scrollspy="governing-boards")
+          li.hidden-lg(du-scrollspy="governing-boards")
+            a(title='Features', href='#governing-boards', du-smooth-scroll) Features
+          li.visible-lg-block(du-scrollspy="governing-boards")
             a(title='Governing Boards', href='#governing-boards', du-smooth-scroll) Governing Boards
-          li(du-scrollspy="mats")
+          li.visible-lg-block(du-scrollspy="mats")
             a(title='Multi-Academy Trusts', href='#mats', du-smooth-scroll)  MATs
-          li(du-scrollspy="gs")
+          li.visible-lg-block(du-scrollspy="gs")
             a(title='Governor Support Services', href='#gs', du-smooth-scroll) Governor Services
           li(du-scrollspy="pricing")
             a(title='See our pricing', href='#pricing', du-smooth-scroll) Pricing
           li
-            a.pull-right(href="#{config.AUTH_ENDPOINT}/auth?response_type=token&client_id=#{encodeURIComponent(config.CLIENT_ID)}&redirect_uri=#{encodeURIComponent(config.AUTH_REDIRECT_URI)}") Sign in
+            a(href="#{config.AUTH_ENDPOINT}/auth?response_type=token&client_id=#{encodeURIComponent(config.CLIENT_ID)}&redirect_uri=#{encodeURIComponent(config.AUTH_REDIRECT_URI)}") Sign in
           li
-            a.pull-right(href='error') Free Trial
+            a(href='error') Free Trial
   
   .home-page
     .page-headline
@@ -45,8 +47,9 @@ block content
       .page.color-2
         .inner-page
           .row.align-bottom
-            h4.page-headline Being a great School Governor is hard work!
-            .page-subheader #{config.SITE_NAME} handles the mundane tasks for you, allowing the Governing Board to focus on what matters most
+            .col-sm-12
+              h4.page-headline Great School Governance is hard work!
+              .page-subheader #{config.SITE_NAME} handles the mundane tasks for you, allowing the Governing Board to focus on what matters most
           .row.align-top
               .feature-list
                 .col-sm-6.feature-block
@@ -92,13 +95,15 @@ block content
                     .headline Security as standard
                     .summary We understand how important security is. All your data and documents are encrypted at rest, all internet traffic is over TLS and we stick to industry best practice with things like password storage.
         .fourscreens-footer
+          img(imgix-src=require('./images/fourscreens.png'))
     
     #mats
       .page.color-3
         .inner-page
           .row.align-bottom
-            h4.page-headline Multi-Academy Trusts
-            .page-subheader #{config.SITE_NAME} makes handling and sharing information across your Governing Boards a doddle!
+            .col-sm-12
+              h4.page-headline Multi-Academy Trusts
+              .page-subheader #{config.SITE_NAME} makes handling and sharing information across your Governing Boards a doddle!
             
           .row.align-center
             .col-sm-6
@@ -127,14 +132,15 @@ block content
                       a(href="#gs", du-smooth-scroll) Governor Service
                       | &nbsp;functionality below.
             .col-sm-6
-              img.screenshot(src=require('./images/screenshots/trust-board-screenshot.png'))
+              img.screenshot(imgix-src=require('./images/screenshots/trust-board-screenshot.png'))
     
     #gs
       .page.color-4
         .inner-page
           .row.align-bottom
-            h4.page-headline Governor Services
-            .page-subheader No more boring admin - #{config.SITE_NAME} is a product designed specifically to do it for you!
+            .col-sm-12
+              h4.page-headline Governor Services
+              .page-subheader No more boring admin - #{config.SITE_NAME} is a product designed specifically to do it for you!
             
           .row.align-center
             .col-sm-6
@@ -153,11 +159,11 @@ block content
                   .headline News
                   .summary Share service-wide news and announcements on your own news page and it appears in Governors' customized news feeds too. For more important announcements simply tick a box and have the article emailed as well.
             .col-sm-6
-              img.screenshot.padded(src=require('./images/screenshots/gs-newsfeed.png'))
+              img.screenshot.padded(imgix-src=require('./images/screenshots/gs-newsfeed.png'))
                 
           .row.align-center
             .col-sm-6
-              img.screenshot.padded(src=require('./images/screenshots/gs-training.png'))
+              img.screenshot.padded(imgix-src=require('./images/screenshots/gs-training.png'))
             .col-sm-6
               .feature-block
                 .icon
@@ -186,7 +192,7 @@ block content
                   .headline Clerking Service
                   .summary Manage your clerking service with #{config.SITE_NAME}. Assign and remove clerks from Governing Boards and appoint temporary replacements. Because the Governing Board is using #{config.SITE_NAME} all the documents and previous conversations will be instantly available.
             .col-sm-6
-              img.screenshot.padded(src=require('./images/screenshots/clerking-group.png'))
+              img.screenshot.padded(imgix-src=require('./images/screenshots/clerking-group.png'))
           .row.align-top
             .col-sm-6.col-md-4.feature-block
               .icon
@@ -210,207 +216,122 @@ block content
       .page.color-5
         .inner-page
           .row
-            h2.page-headline Pricing
-            .smallprint All prices are per year and exclusive of VAT
-            .price-section
-              h3 Individual Governing Board
-              .price £400
-            .price-section
-              h3 Multiple Boards
-              .subtitle Pick and choose from the options below
-              .row.align-center
-                .col-md-7
-                  .multiple-boards-pricing
-                    .price-block-segment
-                      .segment-title Initial Cost
-                      .price-block-container
-                        price-block
-                          .price £300
-                          .smallprint Free if spending more than £5000
-                    
-                    .price-block-segment
-                      .segment-title Board Tools
-                      .price-block-container
-                        price-block
-                          .price £100 
-                          span per board
-                        
-                    .price-block-segment
-                      .segment-title GovernorHub Database
-                      .price-block-container
-                        price-block
-                          .title Database management tools
-                          .price £500
-                          .smallprint Free if spending more than £5000
-                        price-block
-                          .title Each board in the database
-                          .price £30 
-                          .smallprint Free for boards with the Board Tools
-                        
-                    .price-block-segment
-                      .segment-title GovernorHub Services Tools
-                      .price-block-container
-                        price-block 
-                          .title News, Resources and FAQs
-                          .price £500
-                          .smallprint Free if spending more than £5000
-                        price-block 
-                          .title Training Booking and Management
-                          .price £500
-                          .smallprint Free if spending more than £5000
-                        price-block 
-                          .title Clerking Service Tools
-                          .price £500
-                          .smallprint Free if spending more than £5000
-                .col-md-5
-                  .pricing-calculator(ng-cloak)
-                    .title Pricing Calculator
-                    table
-                      tr
-                        td
-                        td Initial cost
-                        td £{{Pricing.initialCost}}
-                      tr
-                        td
-                          input.form-control(type="number", ng-model="Pricing.fullBoardCount")
-                        td GovernorHub Board Tools
-                        td £{{Pricing.fullBoardCount * Pricing.fullBoardCost | number:0}}
-                      tr
-                        td.icon-cell
-                          a(href, ng-click="Pricing.configureDatabase()", ng-hide="Pricing.dbSelected")
-                            i.fa.fa-plus
-                          a(href, ng-click="Pricing.unconfigureDatabase()", ng-show="Pricing.dbSelected")
-                            i.fa.fa-minus
-                        td GovernorHub Database
-                        td £{{Pricing.dbSelected * Pricing.dbCost | number:0}}
-                      tr.subrow(ng-show="Pricing.dbSelected")
-                        td
-                          input.form-control(type="number", ng-model="Pricing.dbBoardCount")
-                        td Database Boards
-                        td
-                      tr.subrow(ng-show="Pricing.dbSelected && Pricing.fullBoardCount")
-                        td {{Pricing.fullBoardCount}} x
-                        td Boards (included)
-                        td £0
-                      tr.subrow(ng-show="Pricing.dbSelected && Pricing.payingDbBoardCount()")
-                        td {{Pricing.payingDbBoardCount()}} x
-                        td Database Only Boards
-                        td £{{Pricing.payingDbBoardCount() * Pricing.dbBoardCost | number:0}}
-                      tr
-                        td.icon-cell
-                          a(href, ng-click="Pricing.selectServiceFeature('content')", ng-hide="Pricing.hasServiceFeature('content')")
-                            i.fa.fa-plus
-                          a(href, ng-click="Pricing.removeServiceFeature('content')", ng-show="Pricing.hasServiceFeature('content')")
-                            i.fa.fa-minus
-                        td News, Resources and FAQs
-                        td £{{Pricing.hasServiceFeature('content') * Pricing.serviceFeatureCost | number:0}}
-                      tr
-                        td.icon-cell
-                          a(href, ng-click="Pricing.selectServiceFeature('training')", ng-hide="Pricing.hasServiceFeature('training')")
-                            i.fa.fa-plus
-                          a(href, ng-click="Pricing.removeServiceFeature('training')", ng-show="Pricing.hasServiceFeature('training')")
-                            i.fa.fa-minus
-                        td Training Booking and Management
-                        td £{{Pricing.hasServiceFeature('training') * Pricing.serviceFeatureCost | number:0}}
-                      tr
-                        td.icon-cell
-                          a(href, ng-click="Pricing.selectServiceFeature('clerks')", ng-hide="Pricing.hasServiceFeature('clerks')")
-                            i.fa.fa-plus
-                          a(href, ng-click="Pricing.removeServiceFeature('clerks')", ng-show="Pricing.hasServiceFeature('clerks')")
-                            i.fa.fa-minus
-                        td Clerking Service Tools
-                        td £{{Pricing.hasServiceFeature('clerks') * Pricing.serviceFeatureCost | number:0}}
-                      tr.totals
-                        td(colspan="3")
-                          .subtotal(ng-show="Pricing.discount()") Subtotal: £{{Pricing.subtotal() | number:0}}
-                          .discount(ng-show="Pricing.discount()") Discount: £{{Pricing.discount() | number:0}}
-                          .total Total: £{{Pricing.total() | number:0}}
-                
+            .col-sm-12
+              h2.page-headline Pricing
+              .smallprint All prices are per year and exclusive of VAT
+              .price-section
+                h3 Individual Governing Board
+                .price £400
+              .price-section
+                h3 Multiple Boards
+                .subtitle Pick and choose from the options below
+                .row.align-center
+                  .col-md-7
+                    .multiple-boards-pricing
+                      .price-block-segment
+                        .segment-title Initial Cost
+                        .price-block-container
+                          price-block
+                            .price £300
+                            .smallprint Free if spending more than £5000
                       
-                
-              //-   .price-block-container.selectable(ng-class="{selected: Pricing.fullBoardCount}")
-              //-     price-block.flippable(ng-class="{flipped: Pricing.configFullBoards}")
-              //-       .front
-              //-         .description Each of your governing or trust boards
-              //-         .price.price-align-center £100
-              //-         button.btn.btn-default.btn-xs(ng-click="Pricing.configureFullBoards()") Select and calculate
-              //-       .back
-              //-         .description
-              //-           small How many boards would you like?
-              //-             br
-              //-             br
-              //-           input.input-sm.form-control.board-number(type="number", value="2", ng-model="Pricing.fullBoardCount")
-              //-         .price
-              //-           small {{Pricing.fullBoardCount}} boards at £{{Pricing.fullBoardCost}} each
-              //-           .total £{{Pricing.fullBoardCount * Pricing.fullBoardCost}}
-              //-         button.btn.btn-default.btn-xs(ng-click="Pricing.unconfigureFullBoards()") Remove
-              //-         
-              //- .price-block-segment
-              //-   .segment-title GovernorHub Database
-              //-   .price-block-container.selectable.price-combination(ng-class="{selected: Pricing.dbSelected}")
-              //-     price-block.flippable(ng-class="{flipped: Pricing.configDatabase}")
-              //-       .front
-              //-         .description Database Tools
-              //-         .price.price-align-center £500
-              //-         .smallprint Free if spending more than £5000
-              //-       .back
-              //-         .description
-              //-           small How many boards would you like in the database in total?
-              //-             br
-              //-             br
-              //-           input.input-sm.form-control.board-number(type="number", value="2", ng-model="Pricing.dbBoardCount")
-              //-       
-              //-     price-block.flippable(ng-class="{flipped: Pricing.configDatabase}")
-              //-       .front
-              //-         .description Each board in the database
-              //-         .price.price-align-center £30
-              //-         button.btn.btn-default.btn-xs(ng-click="Pricing.configureDatabase()") Select and calculate
-              //-         .smallprint Free for those with the Board Tools
-              //-       .back
-              //-         .description Pricing for {{Pricing.totalDbBoardsCount()}} boards
-              //-         .price.price-itemised
-              //-           ul
-              //-             li.item 
-              //-               .item-title Database tools
-              //-               .item-price £{{Pricing.dbCost}}
-              //-             li.item(ng-show="Pricing.fullBoardCount")
-              //-               .item-title {{Pricing.fullBoardCount}} x boards (included)
-              //-               .item-price £0
-              //-             li.item(ng-show="Pricing.payingDbBoardCount()")
-              //-               .item-title {{Pricing.payingDbBoardCount()}} x Database only boards
-              //-               .item-price £{{Pricing.payingDbBoardCount() * Pricing.dbBoardCost}}
-              //-           .total £{{Pricing.dbCost + Pricing.payingDbBoardCount() * Pricing.dbBoardCost}}
-              //-         button.btn.btn-default.btn-xs(ng-click="Pricing.unconfigureDatabase()") Remove
-              //-             
-              //- .price-block-segment
-              //-   .segment-title Centralized Content and Management Tools
-              //-   .price-block-container
-              //-     price-block.selectable(ng-class="{selected: Pricing.hasServiceFeature('content')}")
-              //-       .description Centralized news, resources and FAQs
-              //-       .price.price-align-center £500
-              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.selectServiceFeature('content')", ng-hide="Pricing.hasServiceFeature('content')") Select this
-              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.removeServiceFeature('content')", ng-show="Pricing.hasServiceFeature('content')", ng-cloak) Remove
-              //-       .smallprint Free if spending more than £5000
-              //-     
-              //-     price-block.selectable(ng-class="{selected: Pricing.hasServiceFeature('training')}")
-              //-       .description Training booking and management tools
-              //-       .price.price-align-center £500
-              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.selectServiceFeature('training')", ng-hide="Pricing.hasServiceFeature('training')") Select this
-              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.removeServiceFeature('training')", ng-show="Pricing.hasServiceFeature('training')", ng-cloak) Remove
-              //-       .smallprint Free if spending more than £5000
-              //-     
-              //-     price-block.selectable(ng-class="{selected: Pricing.hasServiceFeature('clerks')}")
-              //-       .description Clerks management tools
-              //-       .price.price-align-center £500
-              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.selectServiceFeature('clerks')", ng-hide="Pricing.hasServiceFeature('clerks')") Select this
-              //-       button.btn.btn-default.btn-xs(ng-click="Pricing.removeServiceFeature('clerks')", ng-show="Pricing.hasServiceFeature('clerks')", ng-cloak) Remove
-              //-       .smallprint Free if spending more than £5000
-              //-     
-              //-   total-block(ng-cloak)
-              //-     .subtotal(ng-show="Pricing.discount()") Subtotal: £{{Pricing.subtotal()}}
-              //-     .discount(ng-show="Pricing.discount()") Discount: -£{{Pricing.discount()}}
-              //-     .total Total: £{{Pricing.total()}}
-            
+                      .price-block-segment
+                        .segment-title Board Tools
+                        .price-block-container
+                          price-block
+                            .price £100 
+                            span per board
+                          
+                      .price-block-segment
+                        .segment-title GovernorHub Database
+                        .price-block-container
+                          price-block
+                            .title Database management tools
+                            .price £500
+                            .smallprint Free if spending more than £5000
+                          price-block
+                            .title Each board in the database
+                            .price £30 
+                            .smallprint Free for boards with the Board Tools
+                          
+                      .price-block-segment
+                        .segment-title GovernorHub Services Tools
+                        .price-block-container
+                          price-block 
+                            .title News, Resources and FAQs
+                            .price £500
+                            .smallprint Free if spending more than £5000
+                          price-block 
+                            .title Training Booking and Management
+                            .price £500
+                            .smallprint Free if spending more than £5000
+                          price-block 
+                            .title Clerking Service Tools
+                            .price £500
+                            .smallprint Free if spending more than £5000
+                  .col-md-5
+                    .pricing-calculator(ng-cloak)
+                      .title Pricing Calculator
+                      table
+                        tr
+                          td
+                          td Initial cost
+                          td £{{Pricing.initialCost}}
+                        tr
+                          td
+                            input.form-control(type="number", ng-model="Pricing.fullBoardCount")
+                          td GovernorHub Board Tools
+                          td £{{Pricing.fullBoardCount * Pricing.fullBoardCost | number:0}}
+                        tr
+                          td.icon-cell
+                            a(href, ng-click="Pricing.configureDatabase()", ng-hide="Pricing.dbSelected")
+                              i.fa.fa-plus
+                            a(href, ng-click="Pricing.unconfigureDatabase()", ng-show="Pricing.dbSelected")
+                              i.fa.fa-minus
+                          td GovernorHub Database
+                          td £{{Pricing.dbSelected * Pricing.dbCost | number:0}}
+                        tr.subrow(ng-show="Pricing.dbSelected")
+                          td
+                            input.form-control(type="number", ng-model="Pricing.dbBoardCount")
+                          td Database Boards
+                          td
+                        tr.subrow(ng-show="Pricing.dbSelected && Pricing.fullBoardCount")
+                          td {{Pricing.fullBoardCount}} x
+                          td Boards (included)
+                          td £0
+                        tr.subrow(ng-show="Pricing.dbSelected && Pricing.payingDbBoardCount()")
+                          td {{Pricing.payingDbBoardCount()}} x
+                          td Database Only Boards
+                          td £{{Pricing.payingDbBoardCount() * Pricing.dbBoardCost | number:0}}
+                        tr
+                          td.icon-cell
+                            a(href, ng-click="Pricing.selectServiceFeature('content')", ng-hide="Pricing.hasServiceFeature('content')")
+                              i.fa.fa-plus
+                            a(href, ng-click="Pricing.removeServiceFeature('content')", ng-show="Pricing.hasServiceFeature('content')")
+                              i.fa.fa-minus
+                          td News, Resources and FAQs
+                          td £{{Pricing.hasServiceFeature('content') * Pricing.serviceFeatureCost | number:0}}
+                        tr
+                          td.icon-cell
+                            a(href, ng-click="Pricing.selectServiceFeature('training')", ng-hide="Pricing.hasServiceFeature('training')")
+                              i.fa.fa-plus
+                            a(href, ng-click="Pricing.removeServiceFeature('training')", ng-show="Pricing.hasServiceFeature('training')")
+                              i.fa.fa-minus
+                          td Training Booking and Management
+                          td £{{Pricing.hasServiceFeature('training') * Pricing.serviceFeatureCost | number:0}}
+                        tr
+                          td.icon-cell
+                            a(href, ng-click="Pricing.selectServiceFeature('clerks')", ng-hide="Pricing.hasServiceFeature('clerks')")
+                              i.fa.fa-plus
+                            a(href, ng-click="Pricing.removeServiceFeature('clerks')", ng-show="Pricing.hasServiceFeature('clerks')")
+                              i.fa.fa-minus
+                          td Clerking Service Tools
+                          td £{{Pricing.hasServiceFeature('clerks') * Pricing.serviceFeatureCost | number:0}}
+                        tr.totals
+                          td(colspan="3")
+                            .subtotal(ng-show="Pricing.discount()") Subtotal: £{{Pricing.subtotal() | number:0}}
+                            .discount(ng-show="Pricing.discount()") Discount: £{{Pricing.discount() | number:0}}
+                            .total Total: £{{Pricing.total() | number:0}}
             
     //- Free trial
     #trial.page.color-5.free-trial-section
@@ -419,43 +340,43 @@ block content
     //- About page
     #customers.page.color-5
       .inner-page
-        h1.page-headline Customers
-      .inner-page.row
-        .col-md-3
-          img.customer(src=require('./images/customers/norfolk.png'), alt='Norfolk County Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/medway.png'), alt='Medway Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/oxfordshire.png'), alt='Oxfordshire County Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/northants.png'), alt='Northamptonsire County Council')
-      .inner-page.row
-        .col-md-3
-          img.customer(src=require('./images/customers/luton.png'), alt='Luton Borough Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/bedford.png'), alt='Bedford Borough Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/mk.png'), alt='Milton Keynes Borough Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/nottingham.png'), alt='Nottingham City Council')
-      .inner-page.row
-        .col-md-3
-          img.small-customer(src=require('./images/customers/bristol.png'), alt='Bristol City Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/enfield.png'), alt='Enfield Borough Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/islington.png'), alt='Islington Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/swindon.png'), alt='Swindon Borough Council')
-      .inner-page.row
-        .col-md-3
-          img.customer(src=require('./images/customers/stockport.png'), alt='Stockport Borough Council')
-        .col-md-3
-          img.customer(src=require('./images/customers/westminster.png'), alt='Diocese of Westminster Multi-Academy Trust')
-        .col-md-3
-          img.customer(src=require('./images/customers/dneat.png'), alt='Diocese of Norwich Multi-Academy Trust')
-        .col-md-3
-          img.small-customer(src=require('./images/customers/s4s.png'), alt='Services 4 Schools')
+        .row
+          .col-sm-12
+            h1.page-headline Customers
+          
+        .customer-container
+          .customer
+            img(imgix-src=require('./images/customers/norfolk.png'), alt='Norfolk County Council')
+          .customer
+            img(imgix-src=require('./images/customers/medway.png'), alt='Medway Council')
+          .customer
+            img(imgix-src=require('./images/customers/oxfordshire.png'), alt='Oxfordshire County Council')
+          .customer
+            img(imgix-src=require('./images/customers/northants.png'), alt='Northamptonsire County Council')
+          .customer
+            img(imgix-src=require('./images/customers/luton.png'), alt='Luton Borough Council')
+          .customer
+            img(imgix-src=require('./images/customers/bedford.png'), alt='Bedford Borough Council')
+          .customer
+            img(imgix-src=require('./images/customers/mk.png'), alt='Milton Keynes Borough Council')
+          .customer
+            img(imgix-src=require('./images/customers/nottingham.png'), alt='Nottingham City Council')
+          .customer
+            img(imgix-src=require('./images/customers/bristol.png'), alt='Bristol City Council')
+          .customer
+            img(imgix-src=require('./images/customers/enfield.png'), alt='Enfield Borough Council')
+          .customer
+            img(imgix-src=require('./images/customers/islington.png'), alt='Islington Council')
+          .customer
+            img(imgix-src=require('./images/customers/swindon.png'), alt='Swindon Borough Council')
+          .customer
+            img(imgix-src=require('./images/customers/stockport.png'), alt='Stockport Borough Council')
+          .customer
+            img(imgix-src=require('./images/customers/westminster.png'), alt='Diocese of Westminster Multi-Academy Trust')
+          .customer
+            img(imgix-src=require('./images/customers/dneat.png'), alt='Diocese of Norwich Multi-Academy Trust')
+          .customer
+            img(imgix-src=require('./images/customers/s4s.png'), alt='Services 4 Schools')
     
     // /#contact
     // The footer, social media icons, and copyright
@@ -468,8 +389,8 @@ block content
             i.fa.fa-facebook-square
         .col-md-6.text-right.copyright
           | &copy; 2016  
-          a(href='http://ortootech.com', title='Ortoo Technologies') Ortoo Technologies
-          |  | all rights reserved 
-          a.scroll(href='#top', title='Got to top')
+          a(href='http://ortootech.com', title='Ortoo Technologies') Ortoo Technologies.
+          | &nbsp;
+          a(href='#home', title='Got to top')
             | To top 
             i.fa.fa-caret-up

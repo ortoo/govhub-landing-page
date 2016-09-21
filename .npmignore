@@ -1,0 +1,16 @@
+node_modules/*
+*.sublime-workspace
+*.sublime-project
+npm_debug.log
+firebase.json
+divshot.json
+
+**/.assetmap
+
+/lib/
+/build/
+/mobile-dev/
+/beta/
+/cordova/
+/.divshot-cache
+/phonegap/
