@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/ortoo/govhub-landing-page#readme",
   "dependencies": {
+    "@ortoo/angular-common": "^3.2.5",
     "angular": "^1.5.3",
     "angular-animate": "^1.5.3",
     "angular-scroll": "^1.0.0",
